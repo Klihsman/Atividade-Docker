@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" template="../template.xhtml">
+
+    <ui:define name="centro">
+        <h3  class="header center teal-text">Cadastro de Bandas</h3>
+        <h:form>
+            <h:messages layout="list" />
+            <h:outputLabel for="nome" value="Nome" />
+            <h:inputText value="#{controller.banda.nomeFantasia}" id="nome" />
+
+            <h:outputLabel for="local" value="Local de Origem" />
+            <h:inputText value="#{controller.banda.localDeOrigem}" id="local" />
+
+<!--
+            <h:selectOneMenu value="#{controller.integrante}"
+                             converter="converter.Integrante"
+                             id="it" styleClass="orange-text">
+                <f:selectItems value="#{controlerIntegrante.integrantes}"
+                               var="it" itemLabel="#{it.nome}" />
+            </h:selectOneMenu>-->
+            <h:commandButton  style="margin-left: 40px; "  id="comando" styleClass="btn" value="adicionar"
+                             action="#{controller.SalvarBanda()}" />
+
+            <h:commandLink styleClass="btn" style="margin-left: 40px; "  id="comando-link" value="lista" action="list"
+                           immediate="true" />
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+

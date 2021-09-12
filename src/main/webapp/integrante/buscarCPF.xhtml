@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="../template.xhtml">
+    <ui:define name="centro">
+        <h3 class="header center teal-text">Buscar integrante por CPF</h3>
+        <h:form>
+            <h:outputLabel value="CPF"/>
+            <h:inputText value="#{controlerIntegrante.CPF}"/>
+                <h:commandButton value="Buscar" action="#{controlerIntegrante.buscarCpf()}" class="btn"/>
+               
+          
+            <h:dataTable var="integrate" value="#{controlerIntegrante.listIntegrante}" class="striped highlight">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{integrate.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    #{integrate.nome}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">CPF</f:facet>
+                    #{integrate.cpf.formatado()}
+                </h:column>
+                <h:column>
+                    <h:commandButton style="margin-left: 40px;" value="x" action="#{controlerIntegrante.remove()}" class="btn"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton style="margin-left: 40px;" value="editar" action="#{controlerIntegrante.edite()}" class="btn"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
